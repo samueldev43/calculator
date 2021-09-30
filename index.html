@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/index.css">
+
+    <title>Calculator</title>
+
+</head>
+
+<body>
+    <div class="container-box">
+        <div class="container">
+            <input type="button" value="0" onclick="writeNumber(0)">
+            <input type="button" value="1" onclick="writeNumber(1)">
+            <input type="button" value="2" onclick="writeNumber(2)">
+            <input type="button" value="3" onclick="writeNumber(3)">
+            <input type="button" value="4" onclick="writeNumber(4)">
+            <input type="button" value="5" onclick="writeNumber(5)">
+            <input type="button" value="6" onclick="writeNumber(6)">
+            <input type="button" value="7" onclick="writeNumber(7)">
+            <input type="button" value="8" onclick="writeNumber(8)">
+            <input type="button" value="9" onclick="writeNumber(9)">
+     
+            <input type="button" value="+" onclick="writeNumber('+')">
+            <input type="button" value="-" onclick="writeNumber('-')">
+            <input type="button" value="X" onclick="writeNumber('x')">
+            <input type="button" value="÷" onclick="writeNumber('÷')">
+     
+            <input type="button" value="C" id="clear">
+            <input type="button">
+         </div>
+     
+         <div class="result">
+             <h2></h2>
+         </div>
+    </div>
+
+    <script src="./src/index.js"></script>
+</body>
+</html>
