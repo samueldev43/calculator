@@ -1,36 +1,81 @@
-const h2 = document.querySelector('h2') 
+const number1 = document.getElementById('n1') 
+const operator = document.getElementById('operator') 
+const number2 = document.getElementById('n2') 
 
-const container = document.querySelector('.container')
+const finalResult = document.getElementById('final-result') 
 
-const c = document.getElementById('clear')
+const calc = document.getElementById('calc') 
 
-    let arr = []
+
+const clear = document.getElementById('clear')
+
+    let n1 = false
+    let math = false
+    let n2 = false
+
+    number1.onfocus = function(){
+        n1 = true
+        math = false
+        n2 = false
+    }
+    
+    operator.onfocus = function(){
+        math = true
+
+        if(math) {
+            n1 = false
+            n2 = false
+        }
+    }
+
+   
+    number2.onfocus = function(){
+        n2 = true
+
+        if(n2) {
+            n1 = false
+            math = false
+        }
+    }
+
 
     function writeNumber(digit) {
-        arr.push(digit)        
-
-        let n1 = arr[0]
-        let n2 = arr[1]
-        let n3 = arr[2]
-
-
-       if(arr.length >= 3) {
-        if(n2 === '+') {
-            h2.innerText = `${n1}  ${n2}  ${n3} =  ${Number(n1 + n3)}`
-        } else if(n2 === '-') {
-            h2.innerText = `${n1}  ${n2}  ${n3} =  ${Number(n1- n3)}`
-        } else if(n2 === '÷') {
-            h2.innerText = `${n1}  ${n2}  ${n3} =  ${Number(n1 / n3)}`
-        }else {
-            h2.innerText = `${n1}  ${n2}  ${n3} =  ${Number(n1 * n3)}`
+        if(n1) {
+            number1.value += digit
+        } else if(math) {
+            operator.value = digit
+        } else if(n2) {
+            number2.value += digit
         }
-       }
-        
+
     }
 
     function clearCalc() {
-        arr = []
-        h2.innerHTML = ''
+       number1.value = ''
+       operator.value = ''
+       number2.value = ''
+       finalResult.innerText = ''
     }
 
-    c.addEventListener('click', clearCalc)
+    clear.addEventListener('click', clearCalc)
+
+    function calcFinal() {
+        switch(operator.value) {
+            case '+':
+                finalResult.innerText = `${Number(number1.value) + Number(number2.value)}`
+            break;
+            case '-':
+                finalResult.innerText = `${Number(number1.value) - Number(number2.value)}`
+            break;
+            case 'x':
+                finalResult.innerText = `${Number(number1.value) * Number(number2.value)}`
+            break;
+            case '÷':
+                finalResult.innerText = `${Number(number1.value) / Number(number2.value)}`
+            break;
+            default:
+                finalResult.innerText = `Operator must be only: +,  -,  x  or  ÷`
+        }
+    }
+
+    calc.addEventListener('click', calcFinal)
