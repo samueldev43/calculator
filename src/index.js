@@ -1,80 +1,68 @@
-const number1 = document.getElementById('n1') 
-const operator = document.getElementById('operator') 
-const number2 = document.getElementById('n2') 
+const number = document.getElementById('n1') 
 
 const finalResult = document.getElementById('final-result') 
 
 const calc = document.getElementById('calc') 
 
-
 const clear = document.getElementById('clear')
 
-    let n1 = false
-    let math = false
-    let n2 = false
-
-    number1.onfocus = function(){
-        n1 = true
-        math = false
-        n2 = false
-    }
-    
-    operator.onfocus = function(){
-        math = true
-
-        if(math) {
-            n1 = false
-            n2 = false
-        }
-    }
-
+const clearEntry = document.getElementById('clear-entry')
    
-    number2.onfocus = function(){
-        n2 = true
+    let arr = []
 
-        if(n2) {
-            n1 = false
-            math = false
-        }
-    }
-
+    let operator = ''
 
     function writeNumber(digit) {
-        if(n1) {
-            number1.value += digit
-        } else if(math) {
-            operator.value = digit
-        } else if(n2) {
-            number2.value += digit
-        }
+        number.value += digit !== '+' && digit !== '-' && digit !== 'x' && digit !=='÷' ? digit : ''
 
+        if(digit === '+' || digit === '-' || digit === 'x' || digit === '÷') {
+            arr.push(Number(number.value.replaceAll('.', '')))
+            number.value = ''
+            operator = digit
+        }
+       
     }
 
     function clearCalc() {
-       number1.value = ''
-       operator.value = ''
-       number2.value = ''
-       finalResult.innerText = ''
+       arr = []
     }
+
 
     clear.addEventListener('click', clearCalc)
 
+
+    function clearE() {
+        number.value = ''
+    }
+
+
+    clearEntry.addEventListener('click', clearE)
+
+
     function calcFinal() {
-        switch(operator.value) {
+        switch(operator) {
             case '+':
-                finalResult.innerText = `${Number(number1.value) + Number(number2.value)}`
+                number.value = `${arr.reduce((total, current) => (
+                    total + current + Number(number.value)
+                ))}`
             break;
             case '-':
-                finalResult.innerText = `${Number(number1.value) - Number(number2.value)}`
+                number.value = `${arr.reduce((total, current) => (
+                    total - current - Number(number.value)
+                ))}`
             break;
             case 'x':
-                finalResult.innerText = `${Number(number1.value) * Number(number2.value)}`
+                number.value = `${arr.reduce((total, current) => (
+                    total * current * Number(number.value)
+                ))}`
             break;
             case '÷':
-                finalResult.innerText = `${Number(number1.value) / Number(number2.value)}`
+                number.value = `${arr.reduce((total, current) => (
+                    total / current / Number(number.value)
+                ))}`
             break;
             default:
-                finalResult.innerText = `Operator must be only: +,  -,  x  or  ÷`
+                number.value = ``
         }
     }
 

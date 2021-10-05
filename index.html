@@ -26,21 +26,23 @@
      
             <input type="button" value="+" onclick="writeNumber('+')">
             <input type="button" value="-" onclick="writeNumber('-')">
-            <input type="button" value="X" onclick="writeNumber('x')">
+            <input type="button" value="x" onclick="writeNumber('x')">
             <input type="button" value="÷" onclick="writeNumber('÷')">
      
             <input type="button" value="C" id="clear">
+            <input type="button" value="." onclick="writeNumber('.')">
             <input type="button" value="=" id="calc">
+            <input type="button" value="CE" id="clear-entry">
+            <input type="button">
+            <input type="button">
          </div>
      
          <div class="result">
-             <input type="text" id="n1">
-             <input type="text" id="operator">
-             <input type="text" id="n2">
-             <div id="final-result"></div>
+             <input type="text" id="n1" disabled>
          </div>
     </div>
 
     <script src="./src/index.js"></script>
 </body>
+
 </html>
