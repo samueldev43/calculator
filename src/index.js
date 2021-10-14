@@ -40,25 +40,27 @@ const clearEntry = document.getElementById('clear-entry')
 
 
     function calcFinal() {
+        arr.push(Number(number.value.replaceAll('.', '')))
+
         switch(operator) {
             case '+':
                 number.value = `${arr.reduce((total, current) => (
-                    total + current + Number(number.value)
+                    total + current
                 ))}`
             break;
             case '-':
                 number.value = `${arr.reduce((total, current) => (
-                    total - current - Number(number.value)
+                    total - current
                 ))}`
             break;
             case 'x':
                 number.value = `${arr.reduce((total, current) => (
-                    total * current * Number(number.value)
+                    total * current
                 ))}`
             break;
             case '÷':
                 number.value = `${arr.reduce((total, current) => (
-                    total / current / Number(number.value)
+                    total / current
                 ))}`
             break;
             default:
