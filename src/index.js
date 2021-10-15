@@ -20,7 +20,6 @@ const clearEntry = document.getElementById('clear-entry')
             number.value = ''
             operator = digit
         }
-       
     }
 
     function clearCalc() {
@@ -66,6 +65,8 @@ const clearEntry = document.getElementById('clear-entry')
             default:
                 number.value = ``
         }
+
+        arr = []
     }
 
     calc.addEventListener('click', calcFinal)
