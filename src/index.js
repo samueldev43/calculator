@@ -1,11 +1,7 @@
 const number = document.getElementById('n1') 
-
 const finalResult = document.getElementById('final-result') 
-
 const calc = document.getElementById('calc') 
-
 const clear = document.getElementById('clear')
-
 const clearEntry = document.getElementById('clear-entry')
    
     let arr = []
@@ -26,7 +22,6 @@ const clearEntry = document.getElementById('clear-entry')
        arr = []
     }
 
-
     clear.addEventListener('click', clearCalc)
 
 
@@ -34,9 +29,7 @@ const clearEntry = document.getElementById('clear-entry')
         number.value = ''
     }
 
-
     clearEntry.addEventListener('click', clearE)
-
 
     function calcFinal() {
         arr.push(Number(number.value.replaceAll('.', '')))
@@ -65,8 +58,6 @@ const clearEntry = document.getElementById('clear-entry')
             default:
                 number.value = ``
         }
-
         arr = []
     }
-
     calc.addEventListener('click', calcFinal)
